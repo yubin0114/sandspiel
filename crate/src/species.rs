@@ -68,21 +68,23 @@ impl Species {
 
 pub fn update_sand(cell: Cell, mut api: SandApi) {
     let dx = api.rand_dir_2();
+    // anti-gravity sand: dy = -1 (up) instead of the original +1 (down)
+    let up = -1;
 
-    let nbr = api.get(0, 1);
+    let nbr = api.get(0, up);
     if nbr.species == Species::Empty {
         api.set(0, 0, EMPTY_CELL);
-        api.set(0, 1, cell);
-    } else if api.get(dx, 1).species == Species::Empty {
+        api.set(0, up, cell);
+    } else if api.get(dx, up).species == Species::Empty {
         api.set(0, 0, EMPTY_CELL);
-        api.set(dx, 1, cell);
+        api.set(dx, up, cell);
     } else if nbr.species == Species::Water
         || nbr.species == Species::Gas
         || nbr.species == Species::Oil
         || nbr.species == Species::Acid
     {
         api.set(0, 0, nbr);
-        api.set(0, 1, cell);
+        api.set(0, up, cell);
     } else {
         api.set(0, 0, cell);
     }
