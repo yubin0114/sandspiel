@@ -48,7 +48,7 @@ void main() {
     saturation = 0.1;
     lightness = 0.4;
   } else if (type == 2) {
-    hue = 0.1;
+    hue = 0.9; // pink sand (original: 0.1, beige)
     saturation = 0.5;
     lightness += 0.3;
   } else if (type == 3) { // water
