@@ -57,7 +57,7 @@ module.exports = (env, argv) => {
     output: {
       path: dist,
       filename: "[name].[contenthash].js",
-      publicPath: "/",
+      publicPath: "auto", // works under a GitHub Pages subpath (original: "/")
     },
     devServer: {
       static: dist,

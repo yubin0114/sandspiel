@@ -2,7 +2,8 @@ import * as Sentry from "@sentry/browser";
 import { Integrations } from "@sentry/tracing";
 import { Wasm as WasmIntegration } from "@sentry/wasm";
 import { boot } from "./boot";
-if (!window.location.host.startsWith("localhost")) {
+// only report errors from the original site, not from forks
+if (window.location.host === "sandspiel.club") {
   Sentry.init({
     dsn: "https://4bf8c3ab764f40569d573fc4021efe40@o40136.ingest.sentry.io/1331284",
 
