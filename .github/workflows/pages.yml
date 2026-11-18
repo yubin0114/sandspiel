@@ -32,7 +32,8 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-      - run: pnpm install --frozen-lockfile
+      # shamefully-hoist: babel transform-runtime imports @babel/runtime, which is only a transitive dep
+      - run: pnpm install --frozen-lockfile --shamefully-hoist
       - run: pnpm run build
       - uses: actions/upload-pages-artifact@v3
         with:
