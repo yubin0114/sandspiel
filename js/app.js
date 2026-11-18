@@ -38,7 +38,8 @@ function SigninRouter({ match, location }) {
 
 function AppRouter() {
   return (
-    <Router>
+    // basename lets routes work under a subpath such as /sandspiel/ on GitHub Pages
+    <Router basename={new URL(__webpack_public_path__).pathname.replace(/\/$/, "")}>
       <Route path="/" component={Index} />
       <Route
         exact
